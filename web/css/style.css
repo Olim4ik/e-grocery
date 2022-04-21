@@ -5966,5 +5966,22 @@ img{
 .agile_top_brand_left_grid:hover .snipcart-details a.button, .snipcart-details a.button:hover {
     background: #84C639;
 }
+.product_list_header span{
+    color: #fff;
+    top: 5px;
+}
+
+.product_list_header button.close span{
+    color: #000;
+}
+
+.product_list_header span.del-item{
+    color: #fa1818;
+    top: 0;
+}
+
+#modal-cart img {
+    max-height: 40px;
+}
 
 

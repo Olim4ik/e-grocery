@@ -11,7 +11,7 @@ class ProductController extends AppController
 	/**
 	 * @throws NotFoundHttpException
 	 */
-	public function actionView($id)
+	public function actionView($id): string
 	{
 		$product = Product::findOne($id);
 		if ($product === null) {
