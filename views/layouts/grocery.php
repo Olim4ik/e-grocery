@@ -59,7 +59,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="modal-body"></div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Продолжить покупки</button>
-                        <a href="<?= Url::to(['cart/view']) ?>" class="btn btn-primary">Оформить заказ</a>
+                        <a href="<?= Url::to(['cart/checkout']) ?>" class="btn btn-primary">Оформить заказ</a>
                         <button  type="button" class="btn btn-danger" onclick="clearCart()">Очистить корзину</button>
                     </div>
                 </div>
