@@ -2,12 +2,31 @@
 
 namespace app\controllers;
 
+use app\models\Cart;
+use app\models\Product;
+use Yii;
+
 class CartController extends AppController
 {
 
-	public function actionAdd($id): void
+	public function actionAdd($id)
 	{
-		var_dump($id); die();
+
+		$product = Product::findOne($id);
+		if ($product === null) {
+			return false;
+		}
+		$session = Yii::$app->session;
+		$session->open();
+		$cart = new Cart();
+		$cart->addToCart($product);
+		if (Yii::$app->request->isAjax) {
+			return $this->renderPartial('cart-modal', compact('session'));
+		}
+		return $this->redirect([Yii::$app->request->referrer]);
+
+
+
 	}
 
 }

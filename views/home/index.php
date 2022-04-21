@@ -100,7 +100,7 @@
                                         </h4>
                                     </div>
                                     <div class="snipcart-details top_brand_home_details">
-                                        <a href="<?= Url::to(['cart/add', 'id' => $offer->id]) ?>" data-id="<?= $offer->id ?>" class="button add-to-cart">
+                                        <a href="<?= Url::to(['/cart/add', 'id' => $offer->id]) ?>" data-id="<?= $offer->id ?>" class="button add-to-cart">
                                             <i class="fa fa-shopping-cart"></i> Add to cart
                                         </a>
                                     </div>
