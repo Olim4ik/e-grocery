@@ -10,6 +10,21 @@ use yii\web\Response;
 class CartController extends AppController
 {
 
+	public function actionChangeCart()
+	{
+		$id = \Yii::$app->request->get('id');
+		$qty = \Yii::$app->request->get('qty');
+		$product = Product::findOne($id);
+		if($product === null){
+			return false;
+		}
+		$session = \Yii::$app->session;
+		$session->open();
+		$cart = new Cart();
+		$cart->addToCart($product, $qty);
+		return $this->renderPartial('cart-modal', compact('session'));
+	}
+
 	public function actionAdd($id)
 	{
 		$product = Product::findOne($id);

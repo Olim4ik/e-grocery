@@ -57,9 +57,9 @@ use yii\web\View;
                                     <td class="invert">
                                         <div class="quantity">
                                             <div class="quantity-select">
-                                                <div class="entry value-minus">&nbsp;</div>
+                                                <div class="entry value-minus" data-qty="-1" data-id="<?= $id ?>">&nbsp;</div>
                                                 <div class="entry value"><span><?= $item['qty'] ?></span></div>
-                                                <div class="entry value-plus active">&nbsp;</div>
+                                                <div class="entry value-plus active" data-qty="1" data-id="<?= $id ?>">&nbsp;</div>
                                             </div>
                                         </div>
                                     </td>
