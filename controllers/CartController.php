@@ -11,7 +11,6 @@ class CartController extends AppController
 
 	public function actionAdd($id)
 	{
-
 		$product = Product::findOne($id);
 		if ($product === null) {
 			return false;
@@ -32,6 +31,37 @@ class CartController extends AppController
 		$session->open();
 		return $this->renderPartial('cart-modal', compact('session'));
 
+	}
+
+	public function actionDelItem(): string
+	{
+		$id = Yii::$app->request->get('id');
+
+		$session = Yii::$app->session;
+		$session->open();
+		$cart = new Cart();
+		$cart->recalc($id);
+
+		return $this->renderPartial('cart-modal', compact('session'));
+	}
+
+	public function actionClear(): string
+	{
+		$session = Yii::$app->session;
+		$session->open();
+		$session->remove('cart');
+		$session->remove('cart.qty');
+		$session->remove('cart.sum');
+		return $this->renderPartial('cart-modal', compact('session'));
+//		$this->layout = false;
+//		return $this->render('cart-modal', compact('session'));
+	}
+
+	public function actionView(): string
+	{
+		$this->setMeta('Оформление заказа :: ' . Yii::$app->name);
+
+		return $this->render('view');
 	}
 
 }

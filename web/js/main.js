@@ -92,6 +92,20 @@ function getCart() {
     });
 }
 
+function clearCart() {
+    $.ajax({
+        url: '/cart/clear',
+        type: 'GET',
+        success: function (res) {
+            if (!res) alert('Err');
+            showCart(res);
+        },
+        error: function(){
+            alert('Error!');
+        }
+    });
+}
+
 
 $('.add-to-cart').on('click', function () {
     let id = $(this).data('id');
@@ -101,6 +115,23 @@ $('.add-to-cart').on('click', function () {
         type: 'GET',
         success: function (res) {
             // console.log(res);
+            if (!res) alert('Err');
+            showCart(res);
+        },
+        error: function(){
+            alert('Error!');
+        }
+    });
+    return false;
+});
+
+$('#modal-cart .modal-body').on('click', '.del-item', function () {
+    let id = $(this).data('id');
+    $.ajax({
+        url: 'cart/del-item', // delItem
+        data: {id: id},
+        type: 'GET',
+        success: function (res) {
             if (!res) alert('Err');
             showCart(res);
         },

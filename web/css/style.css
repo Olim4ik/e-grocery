@@ -5978,6 +5978,7 @@ img{
 .product_list_header span.del-item{
     color: #fa1818;
     top: 0;
+    cursor: pointer;
 }
 
 #modal-cart img {
