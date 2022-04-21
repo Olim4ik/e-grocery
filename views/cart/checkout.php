@@ -81,9 +81,9 @@ use yii\web\View;
                         <h4>Continue to basket</h4>
                         <ul>
                             <?php foreach ($session['cart'] as $item): ?>
-                                <li><?= $item['title'] ?> <i>-</i> <span><?= $item['price'] * $item['qty'] ?> </span></li>
+                                <li><?= $item['title'] ?> <i>-</i> <span>$<?= $item['price'] * $item['qty'] ?> </span></li>
                             <?php endforeach; ?>
-                            <li>Total <i>-</i> <span><?= $session['cart.sum'] ?> </span></li>
+                            <li>Total <i>-</i> <span>$<?= $session['cart.sum'] ?> </span></li>
                         </ul>
                     </div>
                     <div class="col-md-8 address_form_agile">
