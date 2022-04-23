@@ -2,12 +2,14 @@
 
 namespace app\models;
 
-use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 use yii\db\Expression;
 
 class Order extends ActiveRecord
 {
+
+
 	public static function tableName(): string
 	{
 		return 'orders';
@@ -19,8 +21,8 @@ class Order extends ActiveRecord
 			[
 				'class' => TimestampBehavior::class,
 				'attributes' => [
-				ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
-				ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+					ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+					ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
 				],
 				// если вместо метки времени UNIX используется datetime:
 				'value' => new Expression('NOW()'),
@@ -32,12 +34,12 @@ class Order extends ActiveRecord
 	{
 		return [
 			[['name', 'email', 'phone', 'address'], 'required'],
-			[['name'], 'string'],
-			[['email'], 'email'],
+			['note', 'string'],
+			['email', 'email'],
 			[['created_at', 'updated_at'], 'safe'],
-			['qty' => 'integer'],
-			['total' => 'number'],
-			['status' => 'boolean'],
+			['qty', 'integer'],
+			['total', 'number'],
+			['status', 'boolean'],
 		];
 	}
 
@@ -49,13 +51,7 @@ class Order extends ActiveRecord
 			'phone' => 'Телефон',
 			'address' => 'Адрес',
 			'note' => 'Примечание',
-			'qty' => 'Количество',
-			'total' => 'Сумма',
-			'status' => 'Статус',
-			'created_at' => 'Создан',
-			'updated_at' => 'Обновлен',
 		];
 	}
-
 
 }

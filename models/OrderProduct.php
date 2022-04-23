@@ -22,4 +22,24 @@ class OrderProduct extends ActiveRecord
 //			[['product_id'], 'exist', 'skipOnError' => true, 'targetClass' => Product::class, 'targetAttribute' => ['product_id' => 'id']],
 		];
 	}
+
+	public function saveOrderProducts($products, $order_id)
+	{
+		foreach ($products as $id => $product) {
+			$this->id = null;
+			$this->isNewRecord = true;
+			$this->order_id = $order_id;
+			$this->product_id = $id;
+			$this->title = $product['title'];
+			$this->price = $product['price'];
+			$this->qty = $product['qty'];
+			$this->total = $product['qty'] * $product['price'];
+			if (!$this->save()) {
+				return false;
+//				throw new \Exception('Ошибка сохранения заказа');
+			}
+		}
+		return true;
+	}
+
 }

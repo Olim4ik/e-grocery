@@ -1,5 +1,6 @@
 <?php
 
+use yii\web\JqueryAsset;
 use app\components\SEOUrl;
 
 $params = require __DIR__ . '/params.php';
@@ -18,6 +19,16 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+	    'assetManager' => [
+		    'bundles' => [
+			    JqueryAsset::class => [
+				    'sourcePath' => null,   // не опубликовывать комплект
+				    'js' => [
+					    'js/jquery-1.11.1.min.js',
+				    ]
+			    ],
+		    ],
+	    ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'ALgag-v1841oUVVB-0g1vMxfSdQuLKFs',
@@ -38,7 +49,7 @@ $config = [
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
-            'useFileTransport' => true,
+            'useFileTransport' => false,
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
