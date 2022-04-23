@@ -26,6 +26,8 @@ AuthAsset::register($this);
 <body class="hold-transition login-page">
 <?php $this->beginBody() ?>
 
+<!-- # Yii::$app->getSecurity()->generatePasswordHash('123') -->
+
 <?= $content ?>
 
 <?php $this->endBody() ?>

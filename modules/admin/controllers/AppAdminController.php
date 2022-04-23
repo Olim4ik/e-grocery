@@ -16,7 +16,7 @@ class AppAdminController extends Controller
 		return [
 			'access' => [
 				'class' => AccessControl::class,
-//				'only' => ['logout'],
+//				'only' => ['/auth/logout'],
 				'rules' => [
 					[
 						'actions' => ['login'],
@@ -29,12 +29,12 @@ class AppAdminController extends Controller
 					],
 				],
 			],
-			'verbs' => [
-				'class' => VerbFilter::class,
-				'actions' => [
-					'logout' => ['post'],
-				],
-			],
+//			'verbs' => [
+//				'class' => VerbFilter::class,
+//				'actions' => [
+//					'logout' => ['post'],
+//				],
+//			],
 		];
 	}
 }
