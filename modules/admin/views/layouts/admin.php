@@ -230,8 +230,6 @@ desired effect
               -------------------------->
 <!--             debug(Yii::$app->user->identity) -->
 
-
-
 			<?= $content ?>
 
         </section>

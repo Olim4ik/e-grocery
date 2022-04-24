@@ -43,18 +43,6 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-    <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-yellow">
-            <div class="inner">
-                <h3><?= $categories ?></h3>
-                <p>Категорий</p>
-            </div>
-            <div class="icon">
-                <i class="fa fa-cubes"></i>
-            </div>
-            <a href="<?= Url::to(['category/index']) ?>" class="small-box-footer">Перейти
-                <i class="fa fa-arrow-circle-right"></i>
-            </a>
-        </div>
-    </div>
+
 </div>
+

@@ -1,6 +1,8 @@
 <aside class="main-sidebar">
+
 	<section class="sidebar">
 		<ul class="sidebar-menu" data-widget="tree">
+
 			<li class="header"><b>Grocery . Admin . Panel</b></li>
 			<li class="active"><a href="<?= \yii\helpers\Url::to(['main/index']) ?>"><i class="fa fa-bar-chart"></i> <span>Статистика магазина</span></a></li>
 			<li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
@@ -15,6 +17,8 @@
 					<li><a href="#">Link in level 2</a></li>
 				</ul>
 			</li>
+
 		</ul>
 	</section>
+
 </aside>
