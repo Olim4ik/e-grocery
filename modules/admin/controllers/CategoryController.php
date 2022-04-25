@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\modules\admin\models\Product;
 use Yii;
 use app\modules\admin\models\Category;
 use app\modules\admin\models\CategorySearch;
@@ -95,16 +96,25 @@ class CategoryController extends AppAdminController
         ]);
     }
 
-    /**
-     * Deletes an existing Category model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionDelete($id)
+	/**
+	 * Deletes an existing Category model.
+	 * If deletion is successful, the browser will be redirected to the 'index' page.
+	 * @param integer $id
+	 * @return mixed
+	 * @throws NotFoundHttpException if the model cannot be found
+	 * @throws \yii\db\StaleObjectException
+	 */
+    public function actionDelete(int $id)
     {
-        $this->findModel($id)->delete();
+		$cats = Category::find()->where(['parent_id' => $id])->count();
+		$products = Product::find()->where(['category_id' => $id])->count();
+
+		if($cats || $products) {
+			Yii::$app->session->setFlash('error', 'Нельзя удалить категорию, в которой есть подкатегории или товары');
+		} else {
+			$this->findModel($id)->delete();
+			Yii::$app->session->setFlash('success', 'Категория удалена');
+		}
 
         return $this->redirect(['index']);
     }

@@ -13,6 +13,8 @@ class MenuWidget extends Widget
 	public $data;
 	public $tree;
 	public $menuHtml;
+	public $model;
+	public $cache_time = 60;
 
 	public function init()
 	{
@@ -29,9 +31,9 @@ class MenuWidget extends Widget
 	public function run()
 	{
 		// get cache
-		$menu = \Yii::$app->cache->get('menu');
-		if ($menu) {
-			return $menu;
+		if ($this->cache_time) {
+			$menu = \Yii::$app->cache->get('menu');
+			if ($menu) return $menu;
 		}
 
 		$this->data = Category::find()->select('id, parent_id, title')->indexBy('id')->asArray()->all();
@@ -41,7 +43,10 @@ class MenuWidget extends Widget
 		$this->menuHtml .= '</ul>';
 
 		// set cache
-		\Yii::$app->cache->set('menu', $this->menuHtml, 1);
+		if ($this->cache_time) {
+			\Yii::$app->cache->set('menu', $this->menuHtml, $this->cache_time);
+		}
+//		\Yii::$app->cache->set('menu', $this->menuHtml, 1);
 
 //		debug($this->tree);
 		return $this->menuHtml;
@@ -59,15 +64,15 @@ class MenuWidget extends Widget
 		return $tree;
 	}
 
-	protected function getMenuHtml($tree) {
+	protected function getMenuHtml($tree, $tab = '') {
 		$str = '';
 		foreach ($tree as $category) {
-			$str .= $this->catToTemplate($category);
+			$str .= $this->catToTemplate($category, $tab);
 		}
 		return $str;
 	}
 
-	protected function catToTemplate($category) {
+	protected function catToTemplate($category, $tab) {
 		ob_start();
 		include __DIR__ . '/menu_tpl/' . $this->tpl;
 		return ob_get_clean();
