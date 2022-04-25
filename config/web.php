@@ -26,6 +26,9 @@ $config = [
 		],
 	],
     'components' => [
+		'formatter' => [
+			'datetimeFormat' => 'php:d M Y H:i:s', # F -> full month name
+		],
 	    'assetManager' => [
 		    'bundles' => [
 			    JqueryAsset::class => [
