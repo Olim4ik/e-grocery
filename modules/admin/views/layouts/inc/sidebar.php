@@ -1,3 +1,8 @@
+<?php
+
+use yii\helpers\Url;
+
+?>
 <aside class="main-sidebar">
 
     <section class="sidebar">
@@ -14,8 +19,20 @@
               </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?= \yii\helpers\Url::to(['order/index']) ?>">Список заказов</a></li>
-                    <li><a href="<?= \yii\helpers\Url::to(['order/create']) ?>">Добавить заказ</a></li>
+                    <li><a href="<?= Url::to(['order/index']) ?>">Список заказов</a></li>
+                    <li><a href="<?= Url::to(['order/create']) ?>">Добавить заказ</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#"><i class="fa fa-cubes"></i> <span>Категории</span>
+                    <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?= Url::to(['category/index']) ?>">Список категорий</a></li>
+                    <li><a href="<?= Url::to(['category/create']) ?>">Добавить категорию</a></li>
                 </ul>
             </li>
 
