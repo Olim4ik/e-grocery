@@ -92,7 +92,7 @@ use yii\web\View;
 											<div class="snipcart-item block">
 												<div class="snipcart-thumb">
 													<a href="<?= Url::to(['product/view', 'id' => $product->id]) ?>">
-														<?= Html::img("@web/products/{$product->img}", ['alt' => $product->title]) ?>
+														<?= Html::img("@web/{$product->img}", ['alt' => $product->title]) ?>
 													</a>
 													<p><?= $product->title ?></p>
 													<h4><?= $product->price ?>

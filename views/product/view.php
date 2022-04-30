@@ -32,7 +32,7 @@ use yii\helpers\Url;
 		<div class="agileinfo_single">
 			<h5><?= $product->title ?></h5>
 			<div class="col-md-4 agileinfo_single_left">
-				<?= Html::img("@web/products/{$product->img}", ['alt' => $product->title, 'id' => 'example']) ?>
+				<?= Html::img("@web/{$product->img}", ['alt' => $product->title, 'id' => 'example']) ?>
 			</div>
 			<div class="col-md-8 agileinfo_single_right">
 				<div class="rating1">

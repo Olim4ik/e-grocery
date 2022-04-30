@@ -1,5 +1,6 @@
 <?php
 
+use kartik\file\FileInput;
 use mihaildev\ckeditor\CKEditor;
 use mihaildev\elfinder\ElFinder;
 use yii\helpers\Html;
@@ -49,7 +50,15 @@ mihaildev\elfinder\Assets::noConflict($this);
 
     <?= $form->field($model, 'keywords')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'img')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'file')->widget(FileInput::class, [
+        'options' => [
+            'accept' => 'image/*',
+        ],
+        'pluginOptions' => [
+            'showCaption' => false,
+            'showUpload' => false,
+        ],
+    ]) ?>
 
     <?= $form->field($model, 'is_offer')->dropDownList(['Нет', 'Да']) ?>
 
