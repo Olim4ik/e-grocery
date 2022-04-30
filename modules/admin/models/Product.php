@@ -3,6 +3,7 @@
 namespace app\modules\admin\models;
 
 use Yii;
+use yii\db\ActiveQuery;
 
 /**
  * This is the model class for table "product".
@@ -27,6 +28,11 @@ class Product extends \yii\db\ActiveRecord
     {
         return 'product';
     }
+
+	public function getCategory(): ActiveQuery
+	{
+		return $this->hasOne(Category::class, ['id' => 'category_id']);
+	}
 
     /**
      * {@inheritdoc}
